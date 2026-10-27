@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Car Rental System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>🚗 Car Rental System</h1>
+    <p>Manage Vehicles, Customers, Rentals and Payments</p>
+</header>
+
+<nav>
+    <a href="#vehicles">Vehicles</a>
+    <a href="#customers">Customers</a>
+    <a href="#rent">Rent a Car</a>
+    <a href="#rentals">Manage Rentals</a>
+    <a href="#payments">Payments</a>
+</nav>
+
+<main>
+
+    <div id="message" role="status" aria-live="polite"></div>
+
+    <!-- VEHICLES -->
+    <section id="vehicles">
+        <h2>Vehicle Management</h2>
+
+        <form id="vehicleForm">
+            <input name="registration_no"
+                   placeholder="Registration Number"
+                   required>
+
+            <input name="brand"
+                   placeholder="Brand"
+                   required>
+
+            <input name="model"
+                   placeholder="Model"
+                   required>
+
+            <select name="vehicle_type" required>
+                <option value="">Select Vehicle Type</option>
+                <option>Hatchback</option>
+                <option>Sedan</option>
+                <option>SUV</option>
+                <option>MUV</option>
+                <option>Luxury</option>
+            </select>
+
+            <input name="daily_rate"
+                   type="number"
+                   min="0.01"
+                   step="0.01"
+                   placeholder="Daily Rate (₹)"
+                   required>
+
+            <button type="submit">Add Vehicle</button>
+        </form>
+
+        <div id="vehicleList" class="grid"></div>
+    </section>
+
+    <!-- CUSTOMERS -->
+    <section id="customers">
+        <h2>Customer Registration</h2>
+
+        <form id="customerForm">
+            <input name="full_name"
+                   placeholder="Full Name"
+                   required>
+
+            <input name="phone"
+                   type="tel"
+                   placeholder="Phone Number"
+                   required>
+
+            <input name="email"
+                   type="email"
+                   placeholder="Email Address">
+
+            <input name="license_no"
+                   placeholder="Driving License Number"
+                   required>
+
+            <button type="submit">Register Customer</button>
+        </form>
+    </section>
+
+    <!-- RENT A CAR -->
+    <section id="rent">
+        <h2>Rent a Vehicle</h2>
+
+        <form id="rentalForm">
+
+            <label for="customer_id">Select Customer</label>
+            <select name="customer_id" id="customer_id" required>
+                <option value="">Select Customer</option>
+            </select>
+
+            <label for="vehicle_id">Select Available Vehicle</label>
+            <select name="vehicle_id" id="vehicle_id" required>
+                <option value="">Select Vehicle</option>
+            </select>
+
+            <label for="rental_date">Rental Date</label>
+            <input type="date"
+                   name="rental_date"
+                   id="rental_date"
+                   required>
+
+            <label for="expected_return">Expected Return Date</label>
+            <input type="date"
+                   name="expected_return"
+                   id="expected_return"
+                   required>
+
+            <label for="payment_method">Payment Method</label>
+            <select name="payment_method"
+                    id="payment_method"
+                    required>
+                <option value="UPI">UPI</option>
+                <option value="Cash">Cash</option>
+                <option value="Card">Card</option>
+            </select>
+
+            <div id="costPreview">
+                Estimated Cost: ₹0.00
+            </div>
+
+            <button type="submit">Confirm Rental</button>
+        </form>
+    </section>
+
+    <!-- RENTALS -->
+    <section id="rentals">
+        <h2>Rental Management & Returns</h2>
+
+        <button type="button" id="refreshRentals">
+            Refresh Rentals
+        </button>
+
+        <div id="rentalList"></div>
+    </section>
+
+    <!-- PAYMENTS -->
+    <section id="payments">
+        <h2>Payment Records</h2>
+
+        <button type="button" id="refreshPayments">
+            Refresh Payments
+        </button>
+
+        <div id="paymentList"></div>
+    </section>
+
+</main>
+
+<footer>
+    <p>Car Rental System | DBMS Project</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
